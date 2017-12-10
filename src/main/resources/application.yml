@@ -1,0 +1,47 @@
+management:
+  endpoints:
+    web:
+      expose: "*"
+
+strategy:
+  text: >
+    Our strategy is %s. We will lead %s effort of the market through our use of
+    %s and %s to build %s. By being both %s and %s, our %s approach will drive
+    %s throughout the organization. Synergies between our %s and %s will enable
+    us to capture the upside by becoming %s in %s world. These transformations
+    combined with %s due to our %s will create %s through %s and %s.
+  terms:
+    nouns:
+      - competitive advantage
+      - learning organization
+      - big data
+      - growth
+      - value
+      - digital business
+      - platform
+      - revolution
+      - culture
+      - ecosystem
+      - internet of things
+      - insight from data
+      - virtual reality
+      - artificial intelligence
+      - blockchain
+      - design thinking
+      - digital transformation
+    plural-nouns:
+      - social media
+      - leaders
+      - data leaders
+    adjectives:
+      - digital first
+      - networked
+      - collaborative
+      - cloud based
+      - secure
+      - customer focused
+      - disruptive
+      - sustainable
+      - agile
+      - open
+      - innovative
