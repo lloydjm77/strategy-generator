@@ -23,35 +23,35 @@ import reactor.core.publisher.Mono;
 @Component
 public class StrategyHandler {
 
-    @Autowired
-    private StrategyConfigurationProperties strategyConfigurationProperties;
+	@Autowired
+	private StrategyConfigurationProperties strategyConfigurationProperties;
 
-    public Mono<ServerResponse> generateStrategy(ServerRequest serverRequest) {
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-                .body(fromObject(produceStrategy(strategyConfigurationProperties)));
-    }
+	public Mono<ServerResponse> generateStrategy(ServerRequest serverRequest) {
+		return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+				.body(fromObject(produceStrategy(strategyConfigurationProperties)));
+	}
 
-    private String produceStrategy(StrategyConfigurationProperties strategyConfigurationProperties) {
-        Terms terms = strategyConfigurationProperties.getTerms();
+	private String produceStrategy(StrategyConfigurationProperties strategyConfigurationProperties) {
+		Terms terms = strategyConfigurationProperties.getTerms();
 
-        Stack<String> nouns = createShuffledStackFromList(terms.getNouns());
-        Stack<String> pluralNouns = createShuffledStackFromList(terms.getPluralNouns());
-        Stack<String> adjectives = createShuffledStackFromList(terms.getAdjectives());
+		Stack<String> nouns = createShuffledStackFromList(terms.getNouns());
+		Stack<String> pluralNouns = createShuffledStackFromList(terms.getPluralNouns());
+		Stack<String> adjectives = createShuffledStackFromList(terms.getAdjectives());
 
-        return String.format(strategyConfigurationProperties.getText(), adjectives.pop(), indefinite(adjectives.pop()),
-                nouns.pop(), pluralNouns.pop(), indefinite(nouns.pop()), adjectives.pop(), adjectives.pop(),
-                adjectives.pop(), nouns.pop(), nouns.pop(), nouns.pop(), adjectives.pop(), indefinite(adjectives.pop()),
-                nouns.pop(), pluralNouns.pop(), indefinite(nouns.pop()), nouns.pop(), pluralNouns.pop());
-    }
+		return String.format(strategyConfigurationProperties.getText(), adjectives.pop(), indefinite(adjectives.pop()),
+				nouns.pop(), pluralNouns.pop(), indefinite(nouns.pop()), adjectives.pop(), adjectives.pop(),
+				adjectives.pop(), nouns.pop(), nouns.pop(), nouns.pop(), adjectives.pop(), indefinite(adjectives.pop()),
+				nouns.pop(), pluralNouns.pop(), indefinite(nouns.pop()), nouns.pop(), pluralNouns.pop());
+	}
 
-    private <T> Stack<T> createShuffledStackFromList(List<T> input) {
-        Stack<T> output = new Stack<>();
-        output.addAll(input);
-        Collections.shuffle(output);
-        return output;
-    }
+	private <T> Stack<T> createShuffledStackFromList(List<T> input) {
+		Stack<T> output = new Stack<>();
+		output.addAll(input);
+		Collections.shuffle(output);
+		return output;
+	}
 
-    private String indefinite(String s) {
-        return s.matches("^[aeiou].*") ? "an " + s : "a " + s;
-    }
+	private String indefinite(String s) {
+		return s.matches("^[aeiou].*") ? "an " + s : "a " + s;
+	}
 }

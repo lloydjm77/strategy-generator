@@ -12,22 +12,22 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "strategy")
 public class StrategyConfigurationProperties {
 
-    private String text;
-    private Terms terms;
+	private String text;
+	private Terms terms;
 
-    /**
-     * @return the text
-     */
-    public String getText() {
-        return text;
-    }
+	/**
+	 * @return the text
+	 */
+	public String getText() {
+		return text;
+	}
 
-    /**
-     * @param text the text to set
-     */
-    public void setText(String text) {
-        this.text = text;
-    }
+	/**
+	 * @param text the text to set
+	 */
+	public void setText(String text) {
+		this.text = text;
+	}
 
 	/**
 	 * @return the terms
@@ -43,10 +43,10 @@ public class StrategyConfigurationProperties {
 		this.terms = terms;
 	}
 
-    /**
-     * Terms
-     */
-    public static class Terms {
+	/**
+	 * Terms
+	 */
+	public static class Terms {
 		private List<String> nouns;
 		private List<String> pluralNouns;
 		private List<String> adjectives;
@@ -93,5 +93,5 @@ public class StrategyConfigurationProperties {
 			this.adjectives = adjectives;
 		}
 
-    }
+	}
 }

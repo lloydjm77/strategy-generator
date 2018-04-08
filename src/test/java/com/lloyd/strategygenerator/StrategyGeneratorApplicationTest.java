@@ -14,18 +14,18 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @SpringBootTest
 public class StrategyGeneratorApplicationTest {
 
-    @Autowired
-    private RouterFunction<ServerResponse> routerFunction;
+	@Autowired
+	private RouterFunction<ServerResponse> routerFunction;
 
-    private WebTestClient webTestClient;
+	private WebTestClient webTestClient;
 
-    @Before
-    public void setUp() {
-        webTestClient = WebTestClient.bindToRouterFunction(routerFunction).build();
-    }
+	@Before
+	public void setUp() {
+		webTestClient = WebTestClient.bindToRouterFunction(routerFunction).build();
+	}
 
-    @Test
-    public void should_generate_strategy() {
-        webTestClient.get().uri("/strategy").exchange().expectStatus().is2xxSuccessful().expectBody(String.class);
-    }
+	@Test
+	public void should_generate_strategy() {
+		webTestClient.get().uri("/strategy").exchange().expectStatus().is2xxSuccessful().expectBody(String.class);
+	}
 }
